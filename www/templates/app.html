@@ -1,0 +1,59 @@
+<ion-view title="Teste">
+	<ion-content>
+        <div class="list" >
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Nickname</span>
+            <input type="text" placeholder="Nickname" ng-model="perfilAtual.nickname">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Login</span>
+            <input type="text" placeholder="Login" ng-model="perfilAtual.username">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Senha</span>
+            <input type="password" placeholder="Senha"  ng-model="perfilAtual.password">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Indice</span>
+            <input type="number" placeholder="Indice"  ng-model="perfilAtual.indice">
+          </label>
+        </div>
+        <div class="item">
+            <button class="button button-block button-positive fade" ng-click="botaoCadastrar(perfilAtual)" ng-if="cadastroAtivo">
+                Cadastrar
+            </button>
+			<div ng-if="!cadastroAtivo">
+					<button class="button button-positive fade" ng-click="botaoEditar(perfilAtual)">
+		                Editar
+		            </button>
+					<button class="button button-positive fade"  ng-click="cancelEdit()" >
+		                Cancelar
+		            </button>
+			</div>
+
+        </div>
+
+
+			<div class="list">
+              <div class="item item-button-right ">
+                DataBase
+                <button class="button button-balanced" ng-click="refreshButton()">
+                    <i class="icon ion-loop"></i>
+                </button>
+              </div>
+			  <ion-scroll  direction="y" style="width: 100%;">
+				  <div style="width: 100%; height: content;">
+					  <div class="item item-button-right fade-out" ng-repeat="perfil in perfis">
+    					  <div style="width: auto;" ng-click="selectToEdit(perfil)">
+    					  	{{perfil.nickname}}
+    					  </div>
+    					  <button class="button icon button-icon ion-close-circled assertive" ng-click="deletarPerfil(perfil.id)"/>
+    	              </div>
+				  </div>
+			  </ion-scroll>
+            </div>
+
+
+
+  </ion-content>
+</ion-view>
